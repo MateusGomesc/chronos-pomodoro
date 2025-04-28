@@ -1,7 +1,7 @@
 import { TaskModel } from "./TaskModel";
 
 export interface TaskStateModel{
-    tasks: TaskModel
+    tasks: TaskModel[]
     secondsRemaining: number
     formattedSecondsRemaining: string
     activeTask: TaskModel | null
