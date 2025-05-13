@@ -1,4 +1,4 @@
-import { StopCircleIcon } from "lucide-react";
+import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
 import { useRef } from "react";
 
 import { Cycles } from "../Cycles";
@@ -55,10 +55,28 @@ export function MainForm(){
         })
     }
 
+    const handleInterruptTask = () => {
+        setState(prevState => {
+            return {
+                ...prevState,
+                activeTask: null,
+                secondsRemaining: 0,
+                formattedSecondsRemaining: '00:00'
+            }
+        })
+    }
+
     return (
         <form onSubmit={handleCreateNewTask} className='form' action="">
             <div className="formRow">
-                <DefaultInput type='text' id='defaultInput' label='Task' placeholder='Digite algo' ref={TaskNameInput} />
+                <DefaultInput 
+                    type='text' 
+                    id='defaultInput' 
+                    label='Task' 
+                    placeholder='Digite algo' 
+                    ref={TaskNameInput} 
+                    disabled={!!state.activeTask}
+                />
             </div>
             <div className="formRow">
                 <p>
@@ -71,7 +89,25 @@ export function MainForm(){
                 </div>
             )}
             <div className="formRow">
-                <DefaultButton icon={<StopCircleIcon/>} color='red' />
+                {!state.activeTask ? (
+                    <DefaultButton 
+                        icon={<PlayCircleIcon/>}
+                        type="submit" 
+                        aria-label='Iniciar nova tarefa'
+                        title='Iniciar nova tarefa'
+                        key='submitButton'
+                    />
+                ) : (
+                    <DefaultButton 
+                        icon={<StopCircleIcon/>}
+                        type="button" 
+                        aria-label='Interromper tarefa atual'
+                        title='Interromper tarefa atual'
+                        color="red"
+                        onClick={handleInterruptTask}
+                        key='normalButton'
+                    />
+                )}
             </div>
         </form>
     )
