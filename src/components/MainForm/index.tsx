@@ -11,6 +11,7 @@ import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/TaskActions";
+import { TimerWorkerManager } from "../../workers/timerWorkerManager";
 
 export function MainForm(){
     const { state, dispatch } = useTaskContext()
