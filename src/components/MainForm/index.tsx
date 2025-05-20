@@ -4,12 +4,12 @@ import { useRef } from "react";
 import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 import { DefaultInput } from "../DefaultInput";
+import { Tips } from "../Tips";
 
 import { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
-import { formatSecondsToMinutes } from "../../utils/formatSecondsToMinutes";
 import { TaskActionTypes } from "../../contexts/TaskContext/TaskActions";
 
 export function MainForm(){
@@ -62,9 +62,7 @@ export function MainForm(){
                 />
             </div>
             <div className="formRow">
-                <p>
-                    Lorem ipsum dolor sit amet.
-                </p>
+                <Tips/>
             </div>
             {state.currentCycle > 0 && (
                 <div className="formRow">
