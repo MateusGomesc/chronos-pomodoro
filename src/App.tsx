@@ -6,6 +6,7 @@ import { Notfound } from './pages/NotFound'
 import { AboutPomodoro } from './pages/AboutPomodoro'
 
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
+import { MessagesContainer } from './components/MessagesContainer'
 
 
 
@@ -13,7 +14,9 @@ import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 export function App(){
     return(
         <TaskContextProvider>
-            <Home/>
+            <MessagesContainer>
+                <Home/>
+            </MessagesContainer>
         </TaskContextProvider>
         
     )
