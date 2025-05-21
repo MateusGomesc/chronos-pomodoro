@@ -18,8 +18,6 @@ export function TaskContextProvider({ children }: TaskContextProviderProps){
 
     worker.onmessage(e => {
         const countDownSeconds = e.data
-        console.log(countDownSeconds)
-
 
         if(countDownSeconds <= 0){
             if(playBeepRef.current){
@@ -34,15 +32,19 @@ export function TaskContextProvider({ children }: TaskContextProviderProps){
         }
     })
 
+    // Monitoring full state
     useEffect(() => {
-        console.log(state)
         if(!state.activeTask){
             worker.terminate()
         }
 
+        document.title = `${state.formattedSecondsRemaining} - Chronos Pomodoro`
+
         worker.postMessage(state)
     }, [worker, state])
 
+
+    // Monitoring active task
     useEffect(() => {
         if(state.activeTask && playBeepRef.current === null){
             playBeepRef.current = loadBeep()
