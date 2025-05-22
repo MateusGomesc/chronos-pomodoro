@@ -27,7 +27,7 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel): Tas
                 secondsRemaining: 0,
                 formattedSecondsRemaining: '00:00',
                 tasks: state.tasks.map(task => {
-                    if(state.activeTask.id === task.id){
+                    if(state.activeTask?.id === task.id){
                         return {
                             ...task,
                             interruptDate: Date.now()
@@ -54,7 +54,7 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel): Tas
                 secondsRemaining: 0,
                 formattedSecondsRemaining: '00:00',
                 tasks: state.tasks.map(task => {
-                    if(state.activeTask.id === task.id){
+                    if(state.activeTask?.id === task.id){
                         return {
                             ...task,
                             completeDate: Date.now()
